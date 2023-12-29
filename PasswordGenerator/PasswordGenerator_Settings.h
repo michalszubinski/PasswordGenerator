@@ -1,14 +1,13 @@
 #pragma once
 #include "PasswordGenerator_Libraries.h"
-
-// " !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~"
+#include "PasswordGenerator_CharGroup.h"
 
 struct PasswordGenerator_Settings {
-	// group of symbols allowed
-	bool allowLowerCharacters;
-	bool allowUpperCharacters;
-	bool allowNumbers;
-	bool allowCommonSymbols;
+	// Built-in character groups
+	PasswordGenerator_CharGroup cg_lowerCharacters;
+	PasswordGenerator_CharGroup cg_upperCharacters;
+	PasswordGenerator_CharGroup cg_numbers;
+	PasswordGenerator_CharGroup cg_commonSymbols;
 
 	int passwordLength;
 
@@ -18,10 +17,12 @@ struct PasswordGenerator_Settings {
 	int numberMinCount;
 	int commonSymbolsMinCount;
 
-	// TODO: Special groups
-	// TODO: Symbol change
-	// TODO: Weighted symbols
+	// User-defined character groups
+	std::vector<PasswordGenerator_CharGroup> cg_userDefined;
+
 	// TODO: Words from dictionary
+	// TODO: Symbol change when using dictionary
+	// TODO: Weighted symbols
 
 
 	// methods
@@ -29,4 +30,5 @@ struct PasswordGenerator_Settings {
 	std::string getAllowed(); 
 	bool checkIfRequirementsPossible(); // TODO
 	void makeRequirementsPossible(); // TODO
+	void restoreDefaultSettings();
 };

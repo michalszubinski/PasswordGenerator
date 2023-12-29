@@ -2,22 +2,25 @@
 
 PasswordGenerator_Settings::PasswordGenerator_Settings()
 {
-    allowLowerCharacters = 1;
-    allowUpperCharacters = 1;
-    allowNumbers = 1;
-    allowCommonSymbols = 1;
-    
-    passwordLength = 8;
+    restoreDefaultSettings();
 }
 
 std::string PasswordGenerator_Settings::getAllowed()
 {
     std::string allowed{};
 
-    if (allowLowerCharacters) allowed += "abcdefghijklmnopqrstuvwxyz";
-    if (allowUpperCharacters) allowed += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    if (allowNumbers) allowed += "0123456789";
-    if (allowCommonSymbols) allowed += R"MSG( !"#$ % &'()*+,-./:;<=>?@[\]^_`{|}~")MSG";
+    // add built-in character groups
+    if (cg_lowerCharacters.allowed) allowed += cg_lowerCharacters.characterString;
+    if (cg_upperCharacters.allowed) allowed += cg_upperCharacters.characterString;
+    if (cg_numbers.allowed) allowed         += cg_numbers.characterString;
+    if (cg_commonSymbols.allowed) allowed   += cg_commonSymbols.characterString;
+
+    // add user-defined characters groups
+    for (const auto& cg_charGroup : cg_userDefined) 
+        if (cg_charGroup.allowed) allowed += cg_charGroup.characterString;
+
+    // remove repeated characters groups
+    allowed.erase(std::unique(allowed.begin(), allowed.end()), allowed.end());
 
     return allowed;
 }
@@ -29,4 +32,21 @@ bool PasswordGenerator_Settings::checkIfRequirementsPossible()
 
 void PasswordGenerator_Settings::makeRequirementsPossible()
 {
+}
+
+void PasswordGenerator_Settings::restoreDefaultSettings()
+{
+    cg_lowerCharacters.allowed  = 1;
+    cg_upperCharacters.allowed  = 1;
+    cg_numbers.allowed          = 1;
+    cg_commonSymbols.allowed    = 1;
+
+    passwordLength = 8;
+
+    cg_lowerCharacters.characterString  = "abcdefghijklmnopqrstuvwxyz";
+    cg_upperCharacters.characterString  = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    cg_numbers.characterString          = "0123456789";
+    cg_commonSymbols.characterString    = R"MSG( !"#$ % &'()*+,-./:;<=>?@[\]^_`{|}~")MSG";
+
+    cg_userDefined.clear();
 }
