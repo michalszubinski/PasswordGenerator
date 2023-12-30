@@ -1,5 +1,6 @@
 #include "PasswordGenerator_Settings.h"
 
+
 PasswordGenerator_Settings::PasswordGenerator_Settings()
 {
     restoreDefaultSettings();
@@ -43,10 +44,10 @@ void PasswordGenerator_Settings::restoreDefaultSettings()
 
     passwordLength = 8;
 
-    cg_lowerCharacters.characterString  = "abcdefghijklmnopqrstuvwxyz";
-    cg_upperCharacters.characterString  = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    cg_numbers.characterString          = "0123456789";
-    cg_commonSymbols.characterString    = R"MSG( !"#$ % &'()*+,-./:;<=>?@[\]^_`{|}~")MSG";
+    cg_lowerCharacters.characterString  = PasswordGenerator_Constants.STR_cg_lowerCharacters  ;
+    cg_upperCharacters.characterString  = PasswordGenerator_Constants.STR_cg_upperCharacters  ;
+    cg_numbers.characterString          = PasswordGenerator_Constants.STR_cg_numbers          ;
+    cg_commonSymbols.characterString    = PasswordGenerator_Constants.STR_cg_commonSymbols    ;
 
     cg_userDefined.clear();
 }
