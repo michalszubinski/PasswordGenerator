@@ -1,6 +1,7 @@
 #pragma once
 #include "PasswordGenerator_Libraries.h"
 #include "PasswordGenerator_CharGroup.h"
+#include "PasswordGenerator_Constants.h"
 
 struct PasswordGenerator_Settings {
 	// Built-in character groups
