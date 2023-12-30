@@ -37,17 +37,17 @@ void PasswordGenerator_Settings::makeRequirementsPossible()
 
 void PasswordGenerator_Settings::restoreDefaultSettings()
 {
-    cg_lowerCharacters.allowed  = 1;
-    cg_upperCharacters.allowed  = 1;
-    cg_numbers.allowed          = 1;
-    cg_commonSymbols.allowed    = 1;
+    cg_lowerCharacters.allowed  = PasswordGenerator_Constants::BOOL_cg_lowerCharacters;
+    cg_upperCharacters.allowed  = PasswordGenerator_Constants::BOOL_cg_upperCharacters;
+    cg_numbers.allowed          = PasswordGenerator_Constants::BOOL_cg_numbers        ;
+    cg_commonSymbols.allowed    = PasswordGenerator_Constants::BOOL_cg_commonSymbols  ;
 
-    passwordLength = 8;
+    passwordLength = PasswordGenerator_Constants::INT_passwordLength;
 
-    cg_lowerCharacters.characterString  = PasswordGenerator_Constants.STR_cg_lowerCharacters  ;
-    cg_upperCharacters.characterString  = PasswordGenerator_Constants.STR_cg_upperCharacters  ;
-    cg_numbers.characterString          = PasswordGenerator_Constants.STR_cg_numbers          ;
-    cg_commonSymbols.characterString    = PasswordGenerator_Constants.STR_cg_commonSymbols    ;
+    cg_lowerCharacters.characterString  = PasswordGenerator_Constants::STR_cg_lowerCharacters  ;
+    cg_upperCharacters.characterString  = PasswordGenerator_Constants::STR_cg_upperCharacters  ;
+    cg_numbers.characterString          = PasswordGenerator_Constants::STR_cg_numbers          ;
+    cg_commonSymbols.characterString    = PasswordGenerator_Constants::STR_cg_commonSymbols    ;
 
     cg_userDefined.clear();
 }
