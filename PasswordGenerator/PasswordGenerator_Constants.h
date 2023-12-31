@@ -19,4 +19,10 @@ struct PasswordGenerator_Constants {
     static const bool BOOL_cg_numbers           ;
     static const bool BOOL_cg_commonSymbols     ;
 
+    // Password requirements
+    static const int INT_req_lowerCharactersMinCount;
+    static const int INT_req_upperCharactersMinCount;
+    static const int INT_req_numberMinCount;
+    static const int INT_req_commonSymbolsMinCount;
+
 };

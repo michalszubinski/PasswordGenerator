@@ -9,6 +9,6 @@ public: // for testing purposes everything is public
 
 // public:
 	std::string generate();
-	bool checkRequirements(); // TODO
+	bool checkIfPasswordAllowed(std::string password); // TODO
 
 };

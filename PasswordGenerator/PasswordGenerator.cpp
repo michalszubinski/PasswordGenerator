@@ -15,12 +15,12 @@ std::string PasswordGenerator::generate()
         while (password.length() != _PasswordGenerator_Settings.passwordLength) {
             password += allowedCharacters[uniform_dist(e1)];
         }
-    } while (!checkRequirements());
+    } while (!checkIfPasswordAllowed(password));
 
     return password;
 }
 
-bool PasswordGenerator::checkRequirements()
+bool PasswordGenerator::checkIfPasswordAllowed(std::string password)
 {
     return true;
 }

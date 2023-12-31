@@ -13,10 +13,7 @@ struct PasswordGenerator_Settings {
 	int passwordLength;
 
 	// TODO: REQUIREMENTS
-	int lowerCharactersMinCount;
-	int upperCharactersMinCount;
-	int numberMinCount;
-	int commonSymbolsMinCount;
+	// requirements will be specified in PasswordGenerator_CharGroup
 
 	// User-defined character groups
 	std::vector<PasswordGenerator_CharGroup> cg_userDefined;
