@@ -37,17 +37,32 @@ void PasswordGenerator_Settings::makeRequirementsPossible()
 
 void PasswordGenerator_Settings::restoreDefaultSettings()
 {
-    cg_lowerCharacters.allowed  = PasswordGenerator_Constants::BOOL_cg_lowerCharacters;
-    cg_upperCharacters.allowed  = PasswordGenerator_Constants::BOOL_cg_upperCharacters;
-    cg_numbers.allowed          = PasswordGenerator_Constants::BOOL_cg_numbers        ;
-    cg_commonSymbols.allowed    = PasswordGenerator_Constants::BOOL_cg_commonSymbols  ;
-
+    // Password length
     passwordLength = PasswordGenerator_Constants::INT_passwordLength;
 
+    // Built-in character groups - if allowed
+    cg_lowerCharacters.allowed = PasswordGenerator_Constants::BOOL_cg_lowerCharacters;
+    cg_upperCharacters.allowed = PasswordGenerator_Constants::BOOL_cg_upperCharacters;
+    cg_numbers.allowed = PasswordGenerator_Constants::BOOL_cg_numbers;
+    cg_commonSymbols.allowed = PasswordGenerator_Constants::BOOL_cg_commonSymbols;
+
+    // Built-in character groups - characters
     cg_lowerCharacters.characterString  = PasswordGenerator_Constants::STR_cg_lowerCharacters  ;
     cg_upperCharacters.characterString  = PasswordGenerator_Constants::STR_cg_upperCharacters  ;
     cg_numbers.characterString          = PasswordGenerator_Constants::STR_cg_numbers          ;
     cg_commonSymbols.characterString    = PasswordGenerator_Constants::STR_cg_commonSymbols    ;
+
+    // Built-in character groups - requirements
+    cg_lowerCharacters.amountRequiredInPassword = PasswordGenerator_Constants::INT_req_lowerCharactersMinCount;
+    cg_upperCharacters.amountRequiredInPassword = PasswordGenerator_Constants::INT_req_upperCharactersMinCount;
+    cg_numbers.amountRequiredInPassword         = PasswordGenerator_Constants::INT_req_numberMinCount;
+    cg_commonSymbols.amountRequiredInPassword   = PasswordGenerator_Constants::INT_req_commonSymbolsMinCount;   
+
+    cg_lowerCharacters.amountMaxInPassword = PasswordGenerator_Constants::INT_passwordLength / 2;
+    cg_upperCharacters.amountMaxInPassword = PasswordGenerator_Constants::INT_passwordLength / 2;
+    cg_numbers.amountMaxInPassword =         PasswordGenerator_Constants::INT_passwordLength / 2;
+    cg_commonSymbols.amountMaxInPassword =   PasswordGenerator_Constants::INT_passwordLength / 2;
+
 
     cg_userDefined.clear();
 }

@@ -10,6 +10,13 @@ void testGenerate10PasswordsWithDefaultSettings() {
 		std::cout << test.generate() << std::endl;
 }
 
+void testGeneratePasswordWithDefaultSettings() {
+	PasswordGenerator test;
+
+
+	std::cout << test.generate() << std::endl;
+}
+
 void testGenerate20PasswordsWithCharacterGroups() {
 	PasswordGenerator test;
 
@@ -29,7 +36,7 @@ void testGenerate20PasswordsWithCharacterGroups() {
 // MAIN ***********************************************************************************************************
 int main()
 {
-	//testGenerate10PasswordsWithDefaultSettings();
-	testGenerate20PasswordsWithCharacterGroups();
+	testGeneratePasswordWithDefaultSettings();
+	//testGenerate20PasswordsWithCharacterGroups();
 }
 
